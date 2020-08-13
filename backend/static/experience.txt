@@ -1,0 +1,2 @@
+{"student_id": "8903001", "activity_kind": "lecture"}
+{"student_id": "9098768", "activity_kind": "lecture"}
