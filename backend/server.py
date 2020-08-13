@@ -31,7 +31,6 @@ def user_loader(username):
 def index():
     return render_template('index.html')
 
-# index page
 @app.route("/certificate_list")
 def certificate_list():
     f = open("static/history.txt", "r")
@@ -45,11 +44,19 @@ def certificate_list():
         hash_url = "https://thetangle.org/bundle/" + obj.rstrip()
         data_json["hash"] = hash_url
         list_content.append(data_json)
+    
+    list_experience = []
+    fb = open("static/experience.txt", "r")
+    list_raw = fb.readlines()
+    fb.close()
 
-    # TODO: 未審核
-    # "static/experience.txt"
+    for obj in list_raw:
+        print("Hello " + str(obj))
+        data_json = json.loads(obj)
+        list_experience.append(data_json)
 
-    return render_template('Certificate_list.html', title = list_content)
+    return render_template('Certificate_list.html', title = list_content, \
+            list_experience = list_experience)
 
 @app.route("/signup", methods=['GET', 'POST'])
 def signup():
