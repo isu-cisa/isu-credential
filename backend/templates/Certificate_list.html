@@ -9,6 +9,26 @@
 <body>
 
 <table class="table table-striped">
+<caption>證書列表 (尚未審核)</caption>
+<thead>
+<tr>
+    <th>學號</th>
+    <th>活動名稱</th>
+    <th>心得</th>
+</tr>
+</thead>
+<tbody>
+    {% for user in list_experience  %}
+    <tr>
+	<td>{{user.student_id}}</td>
+	<td>{{user.activity_kind}}</td>
+	<td>{{user.experience}}</td>
+    </tr>
+    {% endfor %}
+</tbody>
+</table>
+
+<table class="table table-striped">
 	<caption>證書列表</caption>
 	<thead>
 		<tr>
