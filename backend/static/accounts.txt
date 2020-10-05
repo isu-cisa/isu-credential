@@ -7,3 +7,4 @@
 {"account": "111", "password": "111"}
 {"account": "a", "password": "q"}
 {"account": "a", "password": "1"}
+{"name": "lei", "account": "isu10603075a", "password": "123456789"}

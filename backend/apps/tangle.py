@@ -1,9 +1,15 @@
+import os 
 import json
+from dotenv import load_dotenv
 from iota import Iota, ProposedTransaction, Address, TryteString, Tag, Transaction, ProposedBundle, Hash
 from iota.trits import trits_from_int
 from apps.config import SEED, DEPTH, MIN_WEIGHT_MAGNITUDE, NODE_URL
 
-receiver_address = "ILXW9VMJQVFQVKVE9GUZSODEMIMGOJIJNFAX9PPJHYQPUHZLTWCJZKZKCZYKKJJRAKFCCNJN9EWOW9N9YDGZDDQDDC"
+# receiver_address = "ILXW9VMJQVFQVKVE9GUZSODEMIMGOJIJNFAX9PPJHYQPUHZLTWCJZKZKCZYKKJJRAKFCCNJN9EWOW9N9YDGZDDQDDC"
+# load .env file
+load_dotenv()
+
+receiver_address = os.getenv('receiver_address')
 txn_tag = "TXNTAGS"
 value = 0
 
@@ -35,3 +41,14 @@ def write_data_to_tangle(data):
 
     print(bundle['bundle'].hash)
     return {"status":200, "bundle":bundle['bundle'].hash}
+
+async def write_data(request):
+    form_content = request.form.get
+    result = write_data_to_tangle(form_content)    
+
+    # Save to history
+    fp = open("static/history.txt", "a")
+    fp.write(str(result["bundle"]) + "\n")
+    fp.close()
+
+

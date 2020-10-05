@@ -1,11 +1,13 @@
 import json
+import asyncio
 from flask import Flask, render_template, request, redirect, url_for
 from flask_login import LoginManager, UserMixin, \
         login_required, login_user, current_user, logout_user
 from flask_cors import CORS
-from apps.tangle import write_data_to_tangle
+from apps.tangle import write_data
 from apps.findmessages import findmessages
 
+main_loop = asyncio.get_event_loop()
 app = Flask(__name__)
 CORS(app)
 
@@ -83,7 +85,7 @@ def signin():
         list_content = f.read().splitlines()
         f.close()
 
-        for obj in list_content:
+        for obj in list_coㄉntent:
             obj_json = json.loads(obj)
             if obj_json["account"] == form_content["account"] and \
                     obj_json["password"] == form_content["password"]:
@@ -111,14 +113,7 @@ def activity_info():
 @app.route("/write_data", methods=['GET', 'POST'])
 def write_data():
     if request.method == 'POST':
-        form_content = request.form
-        result = write_data_to_tangle(form_content)
-
-        # Save to history
-        fp = open("static/history.txt", "a")
-        fp.write(str(result["bundle"]) + "\n")
-        fp.close()
-
+        main_loop.run_until_complete(write_data(request))
         return redirect(url_for("backend_credential_editor"))
 
 # Page for student
