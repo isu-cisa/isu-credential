@@ -85,7 +85,7 @@ def signin():
         list_content = f.read().splitlines()
         f.close()
 
-        for obj in list_coㄉntent:
+        for obj in list_content:
             obj_json = json.loads(obj)
             if obj_json["account"] == form_content["account"] and \
                     obj_json["password"] == form_content["password"]:
