@@ -1,3 +1,6 @@
 {"student_id": "8903001", "activity_kind": "lecture"}
 {"student_id": "9098768", "activity_kind": "lecture"}
 {"student_id": "1", "activity_kind": "art", "experience": "good"}
+{"student_id": "10000001", "activity_kind": "other", "experience": "234"}
+{"student_id": "8903001", "activity_kind": "lecture", "experience": "123"}
+{"student_id": "8903001", "activity_kind": "lecture", "experience": "111"}
