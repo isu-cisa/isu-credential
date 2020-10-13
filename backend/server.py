@@ -27,25 +27,11 @@ def user_loader(username):
     user = User()
     user.id = username
 
-    # Get group
-    f = open("static/accounts.txt", "r")
-    list_content = f.read().splitlines()
-    f.close()
-
-    for obj in list_content:
-        obj_json = json.loads(obj)
-        if obj_json["account"] == user.id:
-            user.group = obj_json["group"]
-
     return user
 
 # index page
 @app.route("/")
 def index():
-    if current_user.is_authenticated:
-        user = user_loader(current_user.id)
-        return render_template('index.html', user = current_user)
-
     return render_template('index.html')
 
 def index():
@@ -79,6 +65,7 @@ def certificate_list():
     fb.close()
 
     for obj in list_raw:
+        print("Hello " + str(obj))
         data_json = json.loads(obj)
         list_experience.append(data_json)
 
@@ -90,13 +77,10 @@ def signup():
     if request.method == 'GET':
         return render_template('sign_up.html')
     else:
-        # Save to account field
+        # Save to history
         form_content = request.form
-        dict_user = form_content.to_dict()
-        dict_user["group"] = "normal"
-
         fp = open("static/accounts.txt", "a")
-        fp.write(json.dumps(dict_user) + "\n")
+        fp.write(json.dumps(form_content) + "\n")
         fp.close()
 
     return redirect(url_for("signin"))
@@ -119,12 +103,11 @@ def signin():
                     obj_json["password"] == form_content["password"]:
                     user = User()
                     user.id = form_content["account"]
-                    user.group = obj_json["group"]
                     login_user(user, remember = True)
                     
-                    return render_template('index.html', username = current_user.id, user = user)
+                    return render_template('index.html', username = current_user.id)
 
-        return render_template('index.html', user = user)
+        return render_template('index.html')
 
 # Activity information page
 @app.route("/activity_info", methods=['GET', 'POST'])
@@ -176,6 +159,10 @@ def credential_editor():
 def personal_micro_credit_list():
     return render_template('personal_micro_credit_list.html')
 
+@app.route("/personal_micro_credit_apply")
+def personal_micro_credit_apply():
+    return render_template('personal_micro_credit_apply.html')
+
 # Backend for teacher
 @app.route("/backend_credential_editor")
 def backend_credential_editor():
@@ -188,6 +175,10 @@ def verify_list():
 @app.route("/review_check")
 def review_check():
     return render_template('review_check.html')
+
+@app.route("/review_check_url")
+def review_check_url():
+    return render_template('review_check_url.html')
 
 @app.route("/new_data", methods=['GET', 'POST'])
 def new_data():
