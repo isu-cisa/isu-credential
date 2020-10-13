@@ -1,11 +1,11 @@
 {% block content %}
-<p>Hello! {{username}}
+<p>Hello! {{user.id}}
 <p><li><a href="/signup">註冊</a>
 <p><li><a href="/signin">登入</a>
-<p><li><a>學生頁面</a>
-  <p><ul><li><a href="/credential_editor">學生活動送出頁面</a></ul>
-  <p><ul><li><a href="/personal_micro_credit_list">個人已獲得微學分總覽</a></ul>
-  <p><ul><li><a href="/personal_micro_credit_apply">個人申請微學分申請表</a></ul>
+<p><li><a href="/credential_editor">學生頁面</a>
+<p><li><a href="/personal_micro_credit_list">個人微學分總覽</a>
+
+{% if user.group == "admin" %} 
 <p><li><a>老師頁面</a>
   <p><ul><li><a href="/verify_list">審核總覽</a></ul>
   <p><ul><li><a href="/review_check">心得審核</a></ul>
@@ -13,5 +13,7 @@
   <p><ul><li><a href="/dashboard">dashboard</a></ul>
   <p><ul><li><a href="/certificate_list">證書列表</a></ul>
 <br>
+{% endif %}
+
 <a href="https://hackmd.io/@Isaias/SJb5v6v8L" target="_blank" style="text-decoration:none;color:red;">Project Collaborative Writing</a>
 {% endblock %}
