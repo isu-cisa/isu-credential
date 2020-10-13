@@ -48,7 +48,12 @@
                         	<td>560001</td>
 				<td>{{user.activity_name}}</td>
 				<td>{{user.credit}}</td>
-				<td><a href="{{user.hash}}">Links</a></td>
+                                {% if (user.status == 0) %}
+                                    <td>Can't find this certificate in Blockchain</td>
+                                {% else %}
+                                    <td><a href="{{user.hash}}">Links  {{user.status}}</a></td>
+                                {% endif %}
+
                 	</tr>
 
 		{% endfor %}

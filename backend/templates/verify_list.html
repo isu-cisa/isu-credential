@@ -1,0 +1,31 @@
+<html>
+<head>
+	<meta charset="utf-8"> 
+	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">  
+	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <form>
+	<div class="form-group">
+    <label for="experience">心得</label>
+    <textarea class="form-control" id="experience" rows="6" readonly></textarea>
+  </div>
+  </form>
+  
+  <div class="form-group">
+    <label for="audit_result">審核結果</label>
+    <select class="form-control" id="audit_result">
+      <option value="Not_yet">尚未審核</option>
+      <option value="pass">審核通過</option>
+      <option value="N_wordcount">審核不通過，原因:字數不足</option>
+      <option value="N_activity">審核不通過，原因:未參加活動</option>
+    </select>
+  </div>
+   <button type="submit" class="btn btn-primary">Submit</button>
+
+
+</body>
+</html>
