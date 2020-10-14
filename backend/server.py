@@ -95,6 +95,18 @@ def signup():
         form_content = request.form
         dict_user = form_content.to_dict()
         dict_user["group"] = "normal"
+        account = dict_user["account"]
+
+        if account == "":
+            return json.dumps({"error_message": "account can't empty."}), 500
+        try:
+            with open("static/accounts.txt") as lines:
+                for line in lines:
+                    json_data = json.loads(line)
+                    if json_data["account"] == account:
+                        return json.dumps({"error_message": "account is exist."}), 400
+        except:
+            return json.dumps({"error_message": "can't load account data."}), 500
 
         fp = open("static/accounts.txt", "a")
         fp.write(json.dumps(dict_user) + "\n")
