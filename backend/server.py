@@ -180,6 +180,10 @@ def review_check():
 def review_check_url():
     return render_template('review_check_url.html')
 
+@app.route("/review_readonly")
+def review_readonly():
+    return render_template('review_readonly.html')
+
 @app.route("/new_data", methods=['GET', 'POST'])
 def new_data():
     if request.method == 'POST':
