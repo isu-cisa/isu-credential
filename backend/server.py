@@ -1,8 +1,3 @@
-import json
-from flask import Flask, render_template, request, redirect, url_for
-from flask_login import LoginManager, UserMixin, \
-        login_required, login_user, current_user, logout_user
-from flask_cors import CORS
 from flask_moment import Moment
 from apps.tangle import write_data_to_tangle
 from apps.findmessages import findmessages
@@ -94,6 +89,17 @@ def signup():
         form_content = request.form
         dict_user = form_content.to_dict()
         dict_user["group"] = "normal"
+        account = dict_user["account"]
+        
+        try:
+            with open("static/accounts/txt") as lines:
+                for line in lines:
+                    json_data = json.loads(line)
+                    # 代表註冊帳號已經存在在資料庫了
+                    if json_data["account"] == account:
+                        return json.dumps({"error_message": "account is exist."}), 400 
+        except:
+            return json.dumps({"error_message": "can't load account data."}), 500
 
         fp = open("static/accounts.txt", "a")
         fp.write(json.dumps(dict_user) + "\n")
