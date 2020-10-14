@@ -180,7 +180,10 @@ def credential_editor():
         return render_template('credential_editor.html', list_credential = list_credential)
     else:
         fp = open("static/experience.txt", "a")
-        fp.write(json.dumps(request.form) + "\n")
+        form_content = request.form
+        exp = form_content.to_dict()
+        exp["student_id"] = current_user.id
+        fp.write(json.dumps(exp) + "\n")
         fp.close()
 
         return redirect(url_for("index"))
@@ -188,6 +191,15 @@ def credential_editor():
 @app.route("/personal_micro_credit_list")
 def personal_micro_credit_list():
     return render_template('personal_micro_credit_list.html')
+
+@app.route("/personal_micro_credit_apply")
+def personal_micro_credit_apply():
+    return render_template('personal_micro_credit_apply.html')
+
+@app.route("/feedback")
+def feedback():
+    return render_template('feedback.html')
+
 
 # Backend for teacher
 @app.route("/backend_credential_editor")
@@ -233,4 +245,4 @@ def backend_account_manage():
     return redirect(url_for("index"))
 
 if __name__ == "__main__":
-    app.run(debug = True, threaded = True, host = "0.0.0.0", port = 5000)
+    app.run(debug = True, threaded = True, host = "0.0.0.0", port = 5002)
