@@ -163,6 +163,10 @@ def personal_micro_credit_list():
 def personal_micro_credit_apply():
     return render_template('personal_micro_credit_apply.html')
 
+@app.route("/review_readonly")
+def review_readonly():
+    return render_template('review_readonly.html')
+
 # Backend for teacher
 @app.route("/backend_credential_editor")
 def backend_credential_editor():
@@ -179,10 +183,6 @@ def review_check():
 @app.route("/review_check_url")
 def review_check_url():
     return render_template('review_check_url.html')
-
-@app.route("/review_readonly")
-def review_readonly():
-    return render_template('review_readonly.html')
 
 @app.route("/new_data", methods=['GET', 'POST'])
 def new_data():
