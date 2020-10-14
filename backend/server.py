@@ -6,6 +6,7 @@ from flask_cors import CORS
 from flask_moment import Moment
 from apps.tangle import write_data_to_tangle
 from apps.findmessages import findmessages
+from apps.account import remove
 from datetime import datetime
 
 app = Flask(__name__)
@@ -198,14 +199,26 @@ def new_data():
 
         return str(request.form)
 
-@app.route("/dashboard")
-def dashboard():
-    f = open("static/history.txt", "r")
-    content = f.readlines()
+@app.route("/backend")
+def backend():
+    list_user = []
+    f = open("static/accounts.txt", "r")
+    list_content = f.read().splitlines()
     f.close()
 
-    return render_template('dashboard.html',title=content)
+    for obj in list_content:
+        list_user.append(json.loads(obj))
 
+    return render_template('backend.html',list_user = list_user)
+
+@app.route("/backend_account_manage", methods=["GET"])
+def backend_account_manage():
+    remove_account = request.args.get("remove")
+
+    if remove_account != None:
+        remove(remove_account)
+
+    return redirect(url_for("index"))
 
 if __name__ == "__main__":
     app.run(debug = True, threaded = True, host = "0.0.0.0", port = 5000)

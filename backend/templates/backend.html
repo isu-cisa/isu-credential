@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Backend</title>
+  </head>
+  <body>
+    <table width="300" border="1">
+
+    <tr>
+      <th>Name</th>
+      <th>Account</th>
+      <th>Group</th>
+      <th>Function</th>
+    </tr>
+
+      <ul>
+      {% for user in list_user %}
+      <tr>
+        <td>
+	  <a>{{user.name}}</a>
+	</td>
+
+        <td>
+	  <a>{{user.account}}</a>
+	</td>
+
+        <td>
+	  <a>{{user.group}}</a>
+	</td>
+
+        <td>
+	  <a href="/backend_account_manage?remove={{user.account}}">刪除</a>
+	</td>
+      </tr>
+      {% endfor %}
+      </ul>
+
+    </table>
+  </body>
+</html>
