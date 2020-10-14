@@ -95,18 +95,6 @@ def signup():
         form_content = request.form
         dict_user = form_content.to_dict()
         dict_user["group"] = "normal"
-        account = dict_user["account"]
-
-        if account == "":
-            return json.dumps({"error_message": "account can't empty."}), 500
-        try:
-            with open("static/accounts.txt") as lines:
-                for line in lines:
-                    json_data = json.loads(line)
-                    if json_data["account"] == account:
-                        return json.dumps({"error_message": "account is exist."}), 400
-        except:
-            return json.dumps({"error_message": "can't load account data."}), 500
 
         fp = open("static/accounts.txt", "a")
         fp.write(json.dumps(dict_user) + "\n")
@@ -180,7 +168,10 @@ def credential_editor():
         return render_template('credential_editor.html', list_credential = list_credential)
     else:
         fp = open("static/experience.txt", "a")
-        fp.write(json.dumps(request.form) + "\n")
+        form_content = request.form
+        exp = form_content.to_dict()
+        exp["student_id"] = current_user.id
+        fp.write(json.dumps(exp) + "\n")
         fp.close()
 
         return redirect(url_for("index"))
@@ -188,6 +179,15 @@ def credential_editor():
 @app.route("/personal_micro_credit_list")
 def personal_micro_credit_list():
     return render_template('personal_micro_credit_list.html')
+
+@app.route("/personal_micro_credit_apply")
+def personal_micro_credit_apply():
+    return render_template('personal_micro_credit_apply.html')
+
+@app.route("/feedback")
+def feedback():
+    return render_template('feedback.html')
+
 
 # Backend for teacher
 @app.route("/backend_credential_editor")
@@ -233,4 +233,4 @@ def backend_account_manage():
     return redirect(url_for("index"))
 
 if __name__ == "__main__":
-    app.run(debug = True, threaded = True, host = "0.0.0.0", port = 5000)
+    app.run(debug = True, threaded = True, host = "0.0.0.0", port = 5002)
