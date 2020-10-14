@@ -184,6 +184,10 @@ def review_check():
 def review_check_url():
     return render_template('review_check_url.html')
 
+@app.route("/award_of_review")
+def award_of_review():
+    return render_template('award_of_review.html')
+
 @app.route("/new_data", methods=['GET', 'POST'])
 def new_data():
     if request.method == 'POST':
