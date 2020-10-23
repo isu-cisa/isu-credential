@@ -13,6 +13,7 @@ app = Flask(__name__)
 CORS(app)
 moment= Moment(app)
 
+
 app.config['SECRET_KEY'] = 'isu2001njcndj'
 
 # flask-login
