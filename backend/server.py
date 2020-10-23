@@ -16,6 +16,8 @@ moment= Moment(app)
 
 app.config['SECRET_KEY'] = 'isu2001njcndj'
 
+#hello,world!
+
 # flask-login
 login_manager = LoginManager()
 login_manager.init_app(app)
