@@ -13,6 +13,9 @@ app = Flask(__name__)
 CORS(app)
 moment= Moment(app)
 
+#this is first text checking amend is working or not.
+#second time.
+
 app.config['SECRET_KEY'] = 'isu2001njcndj'
 
 # flask-login
