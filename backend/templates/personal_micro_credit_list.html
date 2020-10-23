@@ -47,6 +47,7 @@
 		<tr>
 			<th>總學分數 : </th>
 			<th class ="vTotal">0</th>
+			<th> <button type="submit" id="Application" style="display:block">申請</button></th>
 		</tr>
         </tbody>
 </table>
@@ -63,7 +64,13 @@
                                     vTotal += parseFloat($(this).text());
                                 });
                         });
-								vTotal=vTotal.toFixed(2);
+				vTotal=vTotal.toFixed(2);
                                 $('.vTotal').text(vTotal);
+			if (vTotal >= 2) {
+				Application.style.display = "block"; //style中的display属性
+			}
+			else {
+				Application.style.display = "none";
+			}
                 });
         </script> 
