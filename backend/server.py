@@ -182,7 +182,13 @@ def credential_editor():
         fp = open("static/experience.txt", "a")
         form_content = request.form
         exp = form_content.to_dict()
+        print("exp = ",exp)
+        x = exp["activity_kind"].split("/")
+        exp["Date"] = x[0]
+        exp["ActivityName"] = x[1]
+        exp["Credit"] = x[2]
         exp["student_id"] = current_user.id
+        del exp["activity_kind"]
         fp.write(json.dumps(exp) + "\n")
         fp.close()
 
@@ -194,7 +200,16 @@ def personal_micro_credit_list():
 
 @app.route("/personal_micro_credit_apply")
 def personal_micro_credit_apply():
-    return render_template('personal_micro_credit_apply.html')
+    f = open("static/experience.txt", "r")
+    content = f.readlines()
+    f.close()
+
+    exp_list = []
+    for obj in content:
+        obj = json.loads(obj)
+        if obj["student_id"] == current_user.id:
+            exp_list.append(obj)
+    return render_template('personal_micro_credit_apply.html',list_content = exp_list)
 
 @app.route("/feedback")
 def feedback():
