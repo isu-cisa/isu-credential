@@ -1,4 +1,9 @@
 {% block content %}
+    {{ moment.include_jquery() }}
+    {{ moment.include_moment() }}
+    {{ moment.locale(auto_detect=True) }}
+    <meta charset="UTF-8">
+    <title>Title</title>
 <p>Hello! {{user.id}}
 <p><li><a>學生頁面</a>
 <p><li><a href="/signup">註冊</a>
@@ -13,8 +18,14 @@
   <p><ul><li><a href="/activity_info">活動編輯</a></ul>
   <p><ul><li><a href="/backend">後台管理</a></ul>
   <p><ul><li><a href="/certificate_list">證書列表</a></ul>
-<br>
 {% endif %}
 
-<a href="https://hackmd.io/@Isaias/SJb5v6v8L" target="_blank" style="text-decoration:none;color:red;">Project Collaborative Writing</a>
+<br>
+<a href="https://hackmd.io/@Isaias/SJb5v6v8L" target="_blank" style="text-decoration:none;color:red;">Project Collaborative Writing</a><br/>
+
+<br>
+<p><li>目前時間為：{{ moment(now).format('MMMM Do YYYY, h:mm:ss a') }}.
+  <p><ul><li>多少時間內：{{ moment(now).fromTime(past_time) }}</ul>
+  <p><ul><li>已經經過了：{{ moment(past_time).fromTime(now) }}</ul>
+
 {% endblock %}
