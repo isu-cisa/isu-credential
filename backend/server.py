@@ -7,7 +7,7 @@ from flask_moment import Moment
 from apps.tangle import write_data_to_tangle
 from apps.findmessages import findmessages
 from apps.account import remove
-from datetime import datetime
+from datetime import datetime, date
 
 app = Flask(__name__)
 CORS(app)
@@ -44,14 +44,12 @@ def user_loader(username):
 # index page
 @app.route("/")
 def index():
+    now = datetime.utcnow()
+    past_time = date(2020, 11, 19) #the date I finish this function
     if current_user.is_authenticated:
         user = user_loader(current_user.id)
-        return render_template('index.html', user = current_user)
+        return render_template('index.html', user = current_user, now=now, past_time=past_time)
 
-    return render_template('index.html')
-
-def index():
-    return render_template('index.html', current_time=datetime.utcnow())
 
 @app.route("/certificate_list")
 def certificate_list():
