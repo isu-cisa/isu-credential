@@ -116,7 +116,7 @@ def signup():
         fp.write(json.dumps(dict_user) + "\n")
         fp.close()
 
-    return redirect(url_for("signin"))
+    return redirect(url_for("index"))
 
 @app.route("/signin", methods=['GET', 'POST'])
 def signin():
