@@ -142,7 +142,7 @@ def signin():
                     user.group = obj_json["group"]
                     login_user(user, remember = True)
                     
-                    return render_template('index.html', username = current_user.id, user = user)
+                    return render_template('home.html', username = current_user.id, user = user)
 
         return render_template('index.html', user = user)
 
