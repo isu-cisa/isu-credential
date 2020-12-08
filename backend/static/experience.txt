@@ -1,6 +1,7 @@
-{"student_id": "8903001", "activity_kind": "lecture"}
-{"student_id": "9098768", "activity_kind": "lecture"}
-{"student_id": "1", "activity_kind": "art", "experience": "good"}
-{"student_id": "10000001", "activity_kind": "other", "experience": "234"}
-{"student_id": "8903001", "activity_kind": "lecture", "experience": "123"}
-{"student_id": "8903001", "activity_kind": "lecture", "experience": "111"}
+{"experience": "\u8b80\u66f8\u5f88\u7d2f", "Date": "2020-09-25", "ActivityName": "\u8b80\u66f8\u6703", "Credit": "4", "student_id": "isu"}
+{"experience": "\u7a0b\u5f0f\u5f88\u96e3", "Date": "2020-01-05", "ActivityName": "Python \u7a0b\u5f0f\u5c0e\u8ad6", "Credit": "3", "student_id": "666"}
+{"experience": "\u82b1\u5f88\u6f02\u4eae", "Date": "2020-09-21", "ActivityName": "\u63d2\u82b1", "Credit": "2", "student_id": "rrr"}
+{"experience": "\u8a71\u5f88\u591a", "Date": "2020-01-01", "ActivityName": "\u6f14\u8b1b", "Credit": "3", "student_id": "test"}
+{"experience": "\u7a0b\u5f0f\u5f88\u8907\u96dc", "Date": "2020-01-05", "ActivityName": "Python \u7a0b\u5f0f\u5c0e\u8ad6", "Credit": "3", "student_id": "isu"}
+{"experience": "hello world", "Date": "2020-01-01", "ActivityName": "\u6f14\u8b1b", "Credit": "3", "student_id": "isu"}
+{"experience": "\u96fb\u5f71\u5f88\u597d\u770b", "Date": "2020-01-03", "ActivityName": "\u96fb\u5f71\u6b23\u8cde", "Credit": "1", "student_id": "isu"}

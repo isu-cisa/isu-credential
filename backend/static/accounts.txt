@@ -3,7 +3,6 @@
 {"account": "1212", "password": "1212", "group": "normal"}
 {"account": "123", "password": "123", "group": "normal"}
 {"account": "555", "password": "444", "group": "normal"}
-{"account": "isu", "password": "isu", "group": "admin"}
 {"account": "111", "password": "111", "group": "normal"}
 {"account": "a", "password": "q", "group": "normal"}
 {"account": "a", "password": "1", "group": "normal"}
@@ -63,3 +62,5 @@
 {"name": "121111", "account": "111", "password": "011c945f30ce2cbafc452f39840f025693339c42", "group": "normal"}
 {"name": "11111", "account": "11111", "password": "7b21848ac9af35be0ddb2d6b9fc3851934db8420", "group": "normal"}
 {"name": "qqq", "account": "qqq", "password": "a056c8d05ae9ac6ca180bc991b93b7ffe37563e0", "group": "normal"}
+{"name": "neko", "account": "isu10603049a", "password": "3ca26628562eaacf005e80e2f6a33a237c12281b", "group": "normal"}
+{"name": "isu", "account": "isu", "password": "9b3cec7d88ceb922f87127278eaaaa8e6c609551", "group": "normal"}

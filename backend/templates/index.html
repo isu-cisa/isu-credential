@@ -1,33 +1,19 @@
 {% block content %}
-    {{ moment.include_jquery() }}
-    {{ moment.include_moment() }}
-    {{ moment.locale(auto_detect=True) }}
-    <meta charset="UTF-8">
-    <title>Title</title>
-<p>Hello! {{user.id}}
-<p><li><a>學生頁面</a>
+<p>Hello! {{username}}
 <p><li><a href="/signup">註冊</a>
 <p><li><a href="/signin">登入</a>
-<p><li><a href="/credential_editor">學生頁面</a>
-<p><li><a href="/personal_micro_credit_list">個人微學分總覽</a>
-
-{% if user.group == "admin" %} 
+<p><li><a href="/logout">登出</a>
+<p><li><a>學生頁面</a>
+  <p><ul><li><a href="/credential_editor">學生活動送出頁面</a></ul>
+  <p><ul><li><a href="/personal_micro_credit_list">個人已獲得微學分總覽</a></ul>
+  <p><ul><li><a href="/personal_micro_credit_apply">個人申請微學分申請表</a></ul>
 <p><li><a>老師頁面</a>
   <p><ul><li><a href="/verify_list">審核總覽</a></ul>
   <p><ul><li><a href="/review_check">心得審核</a></ul>
   <p><ul><li><a href="/activity_info">活動編輯</a></ul>
-  <p><ul><li><a href="/backend">後台管理</a></ul>
-  <p><ul><li><strike><a href="/certificate_list">證書列表</a></strike></ul>
+  <p><ul><li><a href="/dashboard">dashboard</a></ul>
+  <p><ul><li><a href="/certificate_list">證書列表</a></ul>
+  <p><ul><li><a href="/award_of_review">微學分證書申請列表</a></ul>
 <br>
-
-{% endif %}
-
-<br>
-<a href="https://hackmd.io/@Isaias/SJb5v6v8L" target="_blank" style="text-decoration:none;color:red;">Project Collaborative Writing</a><br/>
-
-<br>
-<p><li>目前時間為：{{ moment(now).format('MMMM Do YYYY, h:mm:ss a') }}.
-  <p><ul><li>多少時間內：{{ moment(now).fromTime(past_time) }}</ul>
-  <p><ul><li>已經經過了：{{ moment(past_time).fromTime(now) }}</ul>
-
+<a href="https://hackmd.io/@Isaias/SJb5v6v8L" target="_blank" style="text-decoration:none;color:red;">Project Collaborative Writing</a>
 {% endblock %}

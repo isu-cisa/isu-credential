@@ -11,7 +11,7 @@
 <table class="table table-striped">
         <thead>
                 <tr>
-				        <th>活動時間</th>
+			<th>活動時間</th>
                         <th>活動名稱</th>
                         <th>學分數</th>
                         <th>心得</th>
@@ -19,31 +19,13 @@
                 </tr>
         </thead>
         <tbody>
-                <tr>
-					    <td>2020/04/01</td>
-                        <td>插花</td>
-                        <td>0.2</td>
-                        <td><A HREF ="http://140.127.196.92:5000/feedback">Link</A></td>
-						<td>尚未審核</td>
-
-
-                </tr>
-                <tr>
-					    <td>2020/04/02</td>
-                        <td>音樂賞析</td>
-                        <td>0.3</td>
-                        <td>2020/04/02</td>
-                        <td>審核中</td>
-
-
-                </tr>
-                <tr>
-						<td>2020/04/03</td>
-                        <td>電影賞析</td>
-                        <td>0.4</td>
-                        <td>2020/04/03</td>
-                        <td>已審核已通過</td>
-                </tr>
+		{% for user in list_content  %}								<tr>
+				<td>{{user.Date}}</td>
+				<td>{{user.ActivityName}}</td>
+				<td>{{user.Credit}}</td>
+				<td><A HREF ="/feedback?ActivityName={{user.ActivityName}}&Date={{user.Date}}">Link</A></td>
+				<td>審核中</td>								</tr>
+		{% endfor %}
         </tbody>
 </table>
 

@@ -1,4 +1,5 @@
 import json
+import hashlib
 from flask import Flask, render_template, request, redirect, url_for
 from flask_login import LoginManager, UserMixin, \
         login_required, login_user, current_user, logout_user
@@ -7,7 +8,7 @@ from flask_moment import Moment
 from apps.tangle import write_data_to_tangle
 from apps.findmessages import findmessages
 from apps.account import remove
-from datetime import datetime, date
+from datetime import datetime
 
 app = Flask(__name__)
 CORS(app)
@@ -43,14 +44,19 @@ def user_loader(username):
 # index page
 @app.route("/")
 def index():
-    now = datetime.utcnow()
-    past_time = date(2020, 11, 19) #the date I finish this function
     if current_user.is_authenticated:
         user = user_loader(current_user.id)
-        return render_template('index.html', user = current_user, now=now, past_time=past_time)
+        return render_template('index.html', user = current_user)
+    else:
+        logout_user()
 
+    return render_template('index.html')
+
+def index():
+    return render_template('index.html', current_time=datetime.utcnow())
 
 @app.route("/certificate_list")
+@login_required
 def certificate_list():
     # Credentials that push to blockchain already
     f = open("static/history.txt", "r")
@@ -126,8 +132,11 @@ def signin():
 
         for obj in list_content:
             obj_json = json.loads(obj)
+            sha1 = hashlib.sha1()
+            sha1.update(form_content["password"].encode('utf-8'))
+            res = sha1.hexdigest()
             if obj_json["account"] == form_content["account"] and \
-                    obj_json["password"] == form_content["password"]:
+                    obj_json["password"] == res:
                     user = User()
                     user.id = form_content["account"]
                     user.group = obj_json["group"]
@@ -137,8 +146,14 @@ def signin():
 
         return render_template('index.html', user = user)
 
+@app.route('/logout')
+def logout():
+    logout_user()
+    return render_template('sign_in.html')
+
 # Activity information page
 @app.route("/activity_info", methods=['GET', 'POST'])
+@login_required
 def activity_info():
     if request.method == 'GET':
         return render_template('ActivityInformation.html')
@@ -165,6 +180,7 @@ def write_data():
 
 # Page for student
 @app.route("/credential_editor", methods=['GET', 'POST'])
+@login_required
 def credential_editor():
     if request.method == 'GET':
         list_credential = []
@@ -178,14 +194,55 @@ def credential_editor():
         return render_template('credential_editor.html', list_credential = list_credential)
     else:
         fp = open("static/experience.txt", "a")
-        fp.write(json.dumps(request.form) + "\n")
+        form_content = request.form
+        exp = form_content.to_dict()
+        print("exp = ",exp)
+        x = exp["activity_kind"].split("/")
+        exp["Date"] = x[0]
+        exp["ActivityName"] = x[1]
+        exp["Credit"] = x[2]
+        exp["student_id"] = current_user.id
+        del exp["activity_kind"]
+        fp.write(json.dumps(exp) + "\n")
         fp.close()
 
         return redirect(url_for("index"))
 
 @app.route("/personal_micro_credit_list")
+@login_required
 def personal_micro_credit_list():
     return render_template('personal_micro_credit_list.html')
+
+@app.route("/personal_micro_credit_apply",methods=['GET', 'POST'])
+@login_required
+def personal_micro_credit_apply():
+    f = open("static/experience.txt", "r")
+    content = f.readlines()
+    f.close()
+
+    exp_list = []
+    for obj in content:
+        obj = json.loads(obj)
+        if obj["student_id"] == current_user.id:
+            exp_list.append(obj)
+    return render_template('personal_micro_credit_apply.html',list_content = exp_list)
+
+@app.route("/feedback", methods=['GET'])
+@login_required
+def feedback():
+    exp = ""
+    ActivityName = request.args.get("ActivityName")
+    Date = request.args.get("Date")
+    f = open("static/experience.txt", "r")
+    content = f.readlines()
+    f.close()
+
+    for obj in content:
+        obj = json.loads(obj)
+        if obj["student_id"] == current_user.id and obj["ActivityName"] == ActivityName and obj["Date"] == Date:
+            exp = obj["experience"]
+
+    return render_template('feedback.html',exp = exp)
 
 # Backend for teacher
 @app.route("/backend_credential_editor")
@@ -193,10 +250,12 @@ def backend_credential_editor():
     return render_template('backend_credential_editor.html')
 
 @app.route("/verify_list")
+@login_required
 def verify_list():
     return render_template('verify_list.html')
 
 @app.route("/review_check")
+@login_required
 def review_check():
     return render_template('review_check.html')
 
@@ -230,5 +289,25 @@ def backend_account_manage():
 
     return redirect(url_for("index"))
 
+@app.route("/review_readonly")
+def review_readonly():
+    return render_template('review_readonly.html')
+
+@app.route("/review_check_url")
+def review_check_url():
+    return render_template('review_check_url.html')
+
+@app.route("/award_of_review")
+def award_of_review():
+    return render_template('award_of_review.html')
+
+@app.route("/dashboard")
+def dashboard():
+    f = open("static/history.txt", "r")
+    content = f.readlines()
+    f.close()
+
+    return render_template('dashboard.html',title=content)
+
 if __name__ == "__main__":
-    app.run(debug = True, threaded = True, host = "0.0.0.0", port = 5001)
+    app.run(debug = True, threaded = True, host = "0.0.0.0", port = 5004)
