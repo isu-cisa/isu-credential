@@ -85,6 +85,7 @@
                         <th>發證日期</th>
                 </tr>
         </thead>
+	<form method="post" action="/personal_micro_credit_list">
         <tbody>
                 <tr>
                         <td>2020/04/01</td>
@@ -111,12 +112,15 @@
                         <td>2020/05/03</td>
 
                 </tr>
+		<input type="hidden" name="name" value="john" />
+		<input type="hidden" name="id_stu" value="9765787" />
                 <tr>
                         <th>總學分數 : </th>
                         <th class ="vTotal">0</th>
                         <th> <button type="submit" id="Application" style="display:block">申請</button></th>
                 </tr>
 		</tbody>
+	    </form>
 	    </table>
         </div>
       </div>
