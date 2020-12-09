@@ -257,7 +257,16 @@ def verify_list():
 @app.route("/review_check")
 @login_required
 def review_check():
-    return render_template('review_check.html')
+        f = open("static/experience.txt", "r")
+        content = f.readlines()
+        f.close()
+                    
+        review_list = []
+        for obj in content:
+            review_list.append(json.loads(obj))
+
+        return render_template('review_check.html',review_list = review_list)
+
 
 @app.route("/new_data", methods=['GET', 'POST'])
 def new_data():
@@ -293,9 +302,25 @@ def backend_account_manage():
 def review_readonly():
     return render_template('review_readonly.html')
 
-@app.route("/review_check_url")
+@app.route("/review_check_url",methods=['GET'])
+@login_required
 def review_check_url():
-    return render_template('review_check_url.html')
+        exp = ""
+        ActivityName = request.args.get("ActivityName")
+        Date = request.args.get("Date")
+        student_id = request.args.get("student_id")
+
+        f = open("static/experience.txt", "r")
+        content = f.readlines()
+        f.close()
+
+        for obj in content:
+            obj = json.loads(obj)
+            if obj["student_id"] == student_id and obj["ActivityName"] == ActivityName and obj["Date"] == Date:
+                exp = obj["experience"]
+        
+        return render_template('review_check_url.html',exp = exp)
+
 
 @app.route("/award_of_review")
 def award_of_review():
