@@ -3,3 +3,6 @@
 {"id": "dw8j", "experience": "\u53b2\u5bb3", "Date": "2020-01-03", "ActivityName": "\u96fb\u5f71\u6b23\u8cde", "Credit": "1", "student_id": "isu"}
 {"id": "d88d", "experience": "\u53b2\u5bb3", "Date": "1090813", "ActivityName": "aaa", "Credit": "2", "student_id": "isu"}
 {"experience": "\u7a0b\u5f0f\u597d\u96e3\u5beb \u5df2\u7d93\u5beb\u5169\u5929\u4e86", "id": "PZhs", "Date": "2020-01-99", "ActivityName": "\u7a0b\u5f0f\u6559\u80b2", "Credit": "3", "student_id": "123456789A"}
+{"experience": "123", "id": "EpWi", "Date": "2020-01-01", "ActivityName": "\u6f14\u8b1b", "Credit": "3", "student_id": "isu"}
+{"experience": "123", "id": "rZMD", "Date": "2020-01-01", "ActivityName": "\u6f14\u8b1b", "Credit": "3", "student_id": "isu"}
+{"experience": "123", "id": "xewa", "Date": "1090813", "ActivityName": "0101", "Credit": "0.1", "student_id": "isu"}

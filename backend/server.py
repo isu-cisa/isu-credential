@@ -182,6 +182,7 @@ def credential_editor():
 @app.route("/personal_micro_credit_list",methods=['GET', 'POST'])
 @login_required
 def personal_micro_credit_list():
+    list_raw_experience = []
     if request.method == 'POST':
         form_content = request.form
         dict_user = form_content.to_dict()
@@ -193,8 +194,19 @@ def personal_micro_credit_list():
         with open("static/award.txt", "a") as fp:
             json.dump(obj, fp)
             fp.write("\n")
+        return render_template('personal_micro_credit_list.html', list_raw_experience = list_raw_experience)
+    else:
+        lst_output = []
+        file_experience = open("static/experience_ovrview.txt", "r")
+        list_raw_experience = file_experience.readlines()
+        file_experience.close()
 
-    return render_template('personal_micro_credit_list.html')
+        for obj in list_raw_experience:
+            obj_json = json.loads(obj)
+            if obj_json["student_id"] == current_user.id:
+                lst_output.append(obj)
+        
+        return render_template('personal_micro_credit_list.html', lst_output = lst_output)
 
 @app.route("/personal_micro_credit_apply",methods=['GET', 'POST'])
 @login_required
