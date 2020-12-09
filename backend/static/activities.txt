@@ -8,3 +8,4 @@
 {"Date": "111", "activity_kind": "art", "ActivityName": "111", "EventVenue": "111", "Credit": "111"}
 {"Date": "2020-09/25", "activity_kind": "other", "ActivityName": "\u8b80\u66f8\u6703", "EventVenue": "\u5716\u66f8\u99282\u6a13", "Credit": "4"}
 {"Date": "2020-09-21", "activity_kind": "art", "ActivityName": "\u63d2\u82b1", "EventVenue": "\u5712\u85dd\u6559\u5ba4", "Credit": "2"}
+{"Date": "", "activity_kind": "tool", "ActivityName": "", "EventVenue": "", "Credit": ""}

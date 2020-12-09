@@ -4,3 +4,4 @@
 {"student_id": "10000001", "activity_kind": "other", "experience": "234"}
 {"student_id": "8903001", "activity_kind": "lecture", "experience": "123"}
 {"student_id": "8903001", "activity_kind": "lecture", "experience": "111"}
+{"activity_kind": "lecture", "experience": "sfsdfg"}
