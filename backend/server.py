@@ -1,4 +1,3 @@
-from datetime import date
 import json
 import hashlib
 from flask import Flask, render_template, request, redirect, url_for
@@ -142,8 +141,11 @@ def signin():
                     user.id = form_content["account"]
                     user.group = obj_json["group"]
                     login_user(user, remember = True)
-                    
-                    return render_template('home.html', username = current_user.id, user = user)
+        
+                    if obj_json["group"] == "admin":
+                        return redirect(url_for("review_check"))
+                    else:
+                        return redirect(url_for("personal_micro_credit_list"))
 
         return render_template('index.html', user = user)
 
@@ -209,21 +211,9 @@ def credential_editor():
 
         return redirect(url_for("index"))
 
-@app.route("/personal_micro_credit_list",methods=['GET', 'POST'])
+@app.route("/personal_micro_credit_list")
 @login_required
 def personal_micro_credit_list():
-    if request.method == 'POST':
-        form_content = request.form
-        dict_user = form_content.to_dict()
-        name = dict_user["name"]
-        id_stu = dict_user["id_stu"]
-
-        # write to award
-        obj = {"name":name,"id_stu":id_stu,"date":str(date.today())}
-        with open("static/award.txt", "a") as fp:
-            json.dump(obj, fp)
-            fp.write("\n")
-
     return render_template('personal_micro_credit_list.html')
 
 @app.route("/personal_micro_credit_apply",methods=['GET', 'POST'])
@@ -280,6 +270,7 @@ def review_check():
 
         return render_template('review_check.html',review_list = review_list)
 
+
 @app.route("/new_data", methods=['GET', 'POST'])
 def new_data():
     if request.method == 'POST':
@@ -333,18 +324,10 @@ def review_check_url():
         
         return render_template('review_check_url.html',exp = exp)
 
-@app.route("/award_of_review",methods=['GET', 'POST'])
+
+@app.route("/award_of_review")
 def award_of_review():
-    # read award
-    f = open("static/award.txt", "r")
-    list_content = f.readlines()
-    f.close()
-
-    list_obj = []
-    for obj in list_content:
-        list_obj.append(json.loads(obj))
-
-    return render_template('award_of_review.html', list_obj = list_obj)
+    return render_template('award_of_review.html')
 
 @app.route("/dashboard")
 def dashboard():

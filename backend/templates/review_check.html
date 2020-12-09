@@ -56,12 +56,12 @@
       <nav class="nav-menu d-none d-lg-block">
 	  <ul>
 		<!-- 老師頁面 -->
-		<li><a href="activity_info.html">活動編輯</a></li>
-		<li><a href="review_check.html">心得審核</a></li>
-		<li><a href="verify_list.html">審核總覽</a></li>
-		<li><a href="certificate_list.html">證書列表</a></li>
-		<li><a href="award_of_review.html">達兩學分者總覽</a></li>
-		<li><a href="backend.html">後台管理</a></li>
+		<li><a href="/activity_info">活動編輯</a></li>
+		<li><a href="/review_check">心得審核</a></li>
+		<li><a href="/verify_list">審核總覽</a></li>
+		<li><a href="/certificate_list">證書列表</a></li>
+		<li><a href="/award_of_review">達兩學分者總覽</a></li>
+		<li><a href="/backend">後台管理</a></li>
         </ul>
       </nav><!-- .nav-menu -->
 
@@ -94,7 +94,7 @@
 				<td>name</td>
 				<td>{{user.student_id}}</td>
 				<td>{{user.ActivityName}}</td>
-				<td><A HREF ="http://140.127.196.92:5004/review_check_url?student_id={{user.student_id}}&ActivityName={{user.ActivityName}}&Date={{user.Date}}">Link</A></td>
+				<td><A HREF ="/review_check_url?student_id={{user.student_id}}&ActivityName={{user.ActivityName}}&Date={{user.Date}}">Link</A></td>
 				<td>???</td>
 			</tr>
 		{% endfor %}
