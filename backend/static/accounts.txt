@@ -67,3 +67,6 @@
 {"name": "john", "account": "john112233", "password": "e04a4363766135aeff3e7147b83803246a53f47f", "group": "normal"}
 {"name": "john1122331", "account": "john1122331", "password": "e60bd4f9276f679dc780a6e5a30c1636877eced1", "group": "normal"}
 {"name": "123", "account": "12345", "password": "8cb2237d0679ca88db6464eac60da96345513964", "group": "normal"}
+{"name": "Sample", "account": "123456789A", "password": "be472353ac1c55ca42df82c73bd40a8ce8420a28", "group": "normal"}
+{"name": "test_student", "account": "10603049a", "password": "7e240de74fb1ed08fa08d38063f6a6a91462a815", "group": "normal"}
+{"name": "Sen", "account": "123456", "password": "7c4a8d09ca3762af61e59520943dc26494f8941b", "group": "normal"}

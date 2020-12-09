@@ -1,0 +1,9 @@
+{"id": "dwvd", "experience": "\u8b80\u66f8\u5f88\u7d2f", "Date": "2020-09-25", "ActivityName": "\u8b80\u66f8\u6703", "Credit": "4", "student_id": "isu", "status": "pass"}
+{"id": "dwvd", "experience": "\u8b80\u66f8\u5f88\u7d2f", "Date": "2020-09-25", "ActivityName": "\u8b80\u66f8\u6703", "Credit": "4", "student_id": "isu", "status": "pass"}
+{"id": "dwvd", "experience": "\u8b80\u66f8\u5f88\u7d2f", "Date": "2020-09-25", "ActivityName": "\u8b80\u66f8\u6703", "Credit": "4", "student_id": "isu", "status": "N_wordcount"}
+{"id": "dwvd", "experience": "\u8b80\u66f8\u5f88\u7d2f", "Date": "2020-09-25", "ActivityName": "\u8b80\u66f8\u6703", "Credit": "4", "student_id": "isu", "status": "N_wordcount"}
+{"id": "dwvd", "experience": "\u8b80\u66f8\u5f88\u7d2f", "Date": "2020-09-25", "ActivityName": "\u8b80\u66f8\u6703", "Credit": "4", "student_id": "isu", "status": "N_wordcount"}
+{"id": "dwvd", "experience": "\u8b80\u66f8\u5f88\u7d2f", "Date": "2020-09-25", "ActivityName": "\u8b80\u66f8\u6703", "Credit": "4", "student_id": "isu", "status": "pass"}
+{"id": "dwvd", "experience": "\u8b80\u66f8\u5f88\u7d2f", "Date": "2020-09-25", "ActivityName": "\u8b80\u66f8\u6703", "Credit": "4", "student_id": "isu", "status": "pass"}
+{"id": "dw1d", "experience": "\u7a0b\u5f0f\u5f88\u96e3", "Date": "2020-01-05", "ActivityName": "Python \u7a0b\u5f0f\u5c0e\u8ad6", "Credit": "3", "student_id": "666", "status": "pass"}
+{"id": "dwvd", "experience": "\u8b80\u66f8\u5f88\u7d2f", "Date": "2020-09-25", "ActivityName": "\u8b80\u66f8\u6703", "Credit": "4", "student_id": "isu", "status": "pass"}
