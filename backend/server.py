@@ -348,7 +348,12 @@ def review_check_url():
                         list_content.remove(obj)
 
                 # add new
-                obj_keep["status"] = dict_obj["audit_result"]
+                if dict_obj["audit_result"] == "pass":
+                    # TODO: credential hash
+                    result = write_data_to_tangle(str(date.today()))
+                    obj_keep["status"] = str(result["bundle"])
+                else:
+                    obj_keep["status"] = dict_obj["audit_result"]
 
                 # write
                 os.remove("static/experience.txt")
