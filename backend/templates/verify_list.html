@@ -64,8 +64,6 @@
         </ul>
       </nav><!-- .nav-menu -->
 
-       
-
 
     </div>
 
@@ -96,7 +94,11 @@
                                 <td>{{user.student_id}}</td>
                                 <td>{{user.ActivityName}}</td>
                                 <td><A HREF ="/review_check_url?id={{user.id}}&student_id={{user.student_id}}&ActivityName={{user.ActivityName}}&Date={{user.Date}}">Link</A></td>
-                                <td>{{user.status}}</td>
+				{% if user.status|length > 70 %}
+				    <td><a href="https://thetangle.org/bundle/{{user.status}}" >區塊鏈存證</a></td>
+				{% else %}
+                                    <td>{{user.status}}</td>
+				{% endif %}
                         </tr>
                 {% endfor %}
         </tbody>
