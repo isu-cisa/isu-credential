@@ -274,11 +274,11 @@ def verify_list():
 @login_required
 def review_check():
     file_experience = open("static/experience.txt", "r")
-    list_raw_experience = f.readlines()
-    f_experience.close()
+    list_raw_experience = file_experience.readlines()
+    file_experience.close()
 
     file_account = open("static/accounts.txt", "r")
-    list_raw_account = f2.readlines()
+    list_raw_account = file_account.readlines()
     file_account.close()
 
     list_review = []
