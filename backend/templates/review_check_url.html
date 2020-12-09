@@ -79,24 +79,25 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-			<div class="container">
-				<form>
-					<div class="form-group">
-					<label for="experience">心得</label>
-					<textarea class="form-control" id="experience" rows="6" readonly>{{exp}}</textarea>
-					</div>
-				</form>
+	  <div class="container">
+		<form method="post" action="review_check_url">
+		  <div class="form-group">
+		    <label for="experience">心得</label>
+		    <textarea class="form-control" id="experience" rows="6" readonly>{{exp}}</textarea>
+		  </div>
 
-				<div class="form-group">
-				  <label for="audit_result">審核結果</label>
-				  <select class="form-control" id="audit_result">
-					<option value="Not_yet">尚未審核</option>
-					<option value="pass">審核通過</option>
-					<option value="N_wordcount">審核不通過，原因:字數不足</option>
-					<option value="N_activity">審核不通過，原因:未參加活動</option>
-				  </select>
-				</div>
-				  <button type="submit" class="btn btn-primary">送出</button>
+		  <div class="form-group">
+		    <label for="audit_result">審核結果</label>
+		    <select class="form-control" id="audit_result" name="audit_result">
+			<option value="Not_yet">尚未審核</option>
+			<option value="pass">審核通過</option>
+			<option value="N_wordcount">審核不通過，原因:字數不足</option>
+			<option value="N_activity">審核不通過，原因:未參加活動</option>
+		    </select>
+		    <input type="hidden" name="cre_id" value={{cre_id}}>
+		  </div>
+		  <button type="submit" class="btn btn-primary">送出</button>
+		</form>
         </div>
       </div>
     </section><!-- End Resume Section -->

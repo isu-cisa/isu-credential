@@ -1,3 +1,5 @@
+import os
+import random, string
 from datetime import date
 import json
 import hashlib
@@ -200,8 +202,8 @@ def credential_editor():
         fp = open("static/experience.txt", "a")
         form_content = request.form
         exp = form_content.to_dict()
-        print("exp = ",exp)
         x = exp["activity_kind"].split("/")
+        exp["id"] = ''.join(random.choice(string.ascii_letters) for x in range(4))
         exp["Date"] = x[0]
         exp["ActivityName"] = x[1]
         exp["Credit"] = x[2]
@@ -268,7 +270,32 @@ def backend_credential_editor():
 @app.route("/verify_list")
 @login_required
 def verify_list():
-    return render_template('verify_list.html')
+    file_experience = open("static/experience_ovrview.txt", "r")
+    list_raw_experience = file_experience.readlines()
+    file_experience.close()
+
+    file_account = open("static/accounts.txt", "r")
+    list_raw_account = file_account.readlines()
+    file_account.close()
+
+    list_review = []
+
+    for obj_exp in list_raw_experience:
+        obj_exp = json.loads(obj_exp)
+
+        # find name
+        for obj_acc in list_raw_account:
+            obj_acc = json.loads(obj_acc)
+
+            if obj_exp["student_id"] == obj_acc["account"]:
+                obj_exp["name"] = obj_acc["name"]
+
+                if "status" in obj_exp:
+                    if obj_exp["status"] != "審核中":
+                        list_review.append(obj_exp)
+
+    return render_template('verify_list.html',list_review = list_review)
+
 
 @app.route("/review_check")
 @login_required
@@ -292,6 +319,9 @@ def review_check():
 
             if obj_exp["student_id"] == obj_acc["account"]:
                 obj_exp["name"] = obj_acc["name"]
+
+                if "status" not in obj_exp:
+                    obj_exp["status"] = "審核中"
 
                 list_review.append(obj_exp)
 
@@ -331,13 +361,50 @@ def backend_account_manage():
 def review_readonly():
     return render_template('review_readonly.html')
 
-@app.route("/review_check_url",methods=['GET'])
+@app.route("/review_check_url",methods=['GET', 'POST'])
 @login_required
 def review_check_url():
+        if request.method == 'POST':
+            form_content = request.form
+            dict_obj = form_content.to_dict()
+            
+            if dict_obj["audit_result"] != "Not_yet":
+                list_output = []
+                file_experience = open("static/experience.txt", "r")
+                list_content = file_experience.readlines()
+                file_experience.close()
+
+                # remove old
+                obj_keep = {}
+                for obj in list_content:
+                    obj_json = json.loads(obj)
+                    if obj_json["id"] == dict_obj["cre_id"]:
+                        obj_keep = obj_json
+                        list_content.remove(obj)
+
+                # add new
+                obj_keep["status"] = dict_obj["audit_result"]
+
+                # write
+                os.remove("static/experience.txt")
+                with open('static/experience.txt', 'a') as file_experience:
+                    for obj in list_content:
+                        obj = json.loads(obj)
+                        file_experience.write(json.dumps(obj))
+                        file_experience.write("\n")
+
+                if "status" in obj_keep:
+                    with open('static/experience_ovrview.txt', 'a') as file_experience:
+                        file_experience.write(json.dumps(obj_keep))
+                        file_experience.write("\n")
+
+            return redirect(url_for("review_check"))
+
         exp = ""
         ActivityName = request.args.get("ActivityName")
         Date = request.args.get("Date")
         student_id = request.args.get("student_id")
+        cre_id = request.args.get("id")
 
         f = open("static/experience.txt", "r")
         content = f.readlines()
@@ -348,7 +415,7 @@ def review_check_url():
             if obj["student_id"] == student_id and obj["ActivityName"] == ActivityName and obj["Date"] == Date:
                 exp = obj["experience"]
         
-        return render_template('review_check_url.html',exp = exp)
+        return render_template('review_check_url.html',cre_id = cre_id, exp = exp)
 
 
 @app.route("/award_of_review")
