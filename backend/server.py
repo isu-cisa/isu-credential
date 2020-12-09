@@ -273,16 +273,29 @@ def verify_list():
 @app.route("/review_check")
 @login_required
 def review_check():
-        f = open("static/experience.txt", "r")
-        content = f.readlines()
-        f.close()
-                    
-        review_list = []
-        for obj in content:
-            review_list.append(json.loads(obj))
+    file_experience = open("static/experience.txt", "r")
+    list_raw_experience = file_experience.readlines()
+    file_experience.close()
 
-        return render_template('review_check.html',review_list = review_list)
+    file_account = open("static/accounts.txt", "r")
+    list_raw_account = file_account.readlines()
+    file_account.close()
 
+    list_review = []
+
+    for obj_exp in list_raw_experience:
+        obj_exp = json.loads(obj_exp)
+
+        # find name
+        for obj_acc in list_raw_account:
+            obj_acc = json.loads(obj_acc)
+
+            if obj_exp["student_id"] == obj_acc["account"]:
+                obj_exp["name"] = obj_acc["name"]
+
+                list_review.append(obj_exp)
+
+    return render_template('review_check.html',list_review = list_review)
 
 @app.route("/new_data", methods=['GET', 'POST'])
 def new_data():

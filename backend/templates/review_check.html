@@ -89,15 +89,15 @@
                         <th>審核狀態</th>
                 </tr>
         </thead>
-		{% for user in review_list  %}
-			<tr>
-				<td>name</td>
-				<td>{{user.student_id}}</td>
-				<td>{{user.ActivityName}}</td>
-				<td><A HREF ="/review_check_url?student_id={{user.student_id}}&ActivityName={{user.ActivityName}}&Date={{user.Date}}">Link</A></td>
-				<td>???</td>
-			</tr>
-		{% endfor %}
+              {% for user in list_review  %}
+                        <tr>
+                                <td>{{user.name}}</td>
+                                <td>{{user.student_id}}</td>
+                                <td>{{user.ActivityName}}</td>
+                                <td><A HREF ="/review_check_url?student_id={{user.student_id}}&ActivityName={{user.ActivityName}}&Date={{user.Date}}">Link</A></td>
+                                <td>審核中</td>
+                        </tr>
+                {% endfor %}
 
         <tbody>
         </tbody>
