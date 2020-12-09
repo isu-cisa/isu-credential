@@ -63,7 +63,7 @@
 {"name": "11111", "account": "11111", "password": "7b21848ac9af35be0ddb2d6b9fc3851934db8420", "group": "normal"}
 {"name": "qqq", "account": "qqq", "password": "a056c8d05ae9ac6ca180bc991b93b7ffe37563e0", "group": "normal"}
 {"name": "neko", "account": "isu10603049a", "password": "3ca26628562eaacf005e80e2f6a33a237c12281b", "group": "normal"}
-{"name": "isu", "account": "isu", "password": "9b3cec7d88ceb922f87127278eaaaa8e6c609551", "group": "normal"}
+{"name": "isu", "account": "isu", "password": "9b3cec7d88ceb922f87127278eaaaa8e6c609551", "group": "admin"}
 {"name": "john", "account": "john112233", "password": "e04a4363766135aeff3e7147b83803246a53f47f", "group": "normal"}
 {"name": "john1122331", "account": "john1122331", "password": "e60bd4f9276f679dc780a6e5a30c1636877eced1", "group": "normal"}
 {"name": "123", "account": "12345", "password": "8cb2237d0679ca88db6464eac60da96345513964", "group": "normal"}

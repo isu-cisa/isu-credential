@@ -56,9 +56,9 @@
       <nav class="nav-menu d-none d-lg-block">
         <ul>
         <!-- 學生頁面 -->
-		<li class="menu-active"><a href="credential_editor.html">心得填寫</a></li>
-		<li><a href="personal_micro_credit_list.html">個人證書一覽表</a></li>
-		<li><a href="personal_micro_credit_apply.html">心得審核狀態查詢</a></li>
+		<li class="menu-active"><a href="/credential_editor">心得填寫</a></li>
+		<li><a href="/personal_micro_credit_list">個人證書一覽表</a></li>
+		<li><a href="/personal_micro_credit_apply">心得審核狀態查詢</a></li>
         </ul>
       </nav><!-- .nav-menu -->
        
@@ -85,8 +85,7 @@
                         <th>發證日期</th>
                 </tr>
         </thead>
-	<form method="post" action="/personal_micro_credit_list">
-          <tbody>
+        <tbody>
                 <tr>
                         <td>2020/04/01</td>
                         <td>插花</td>
@@ -112,15 +111,12 @@
                         <td>2020/05/03</td>
 
                 </tr>
-		<input type="hidden" name="name" value="john" />
-		<input type="hidden" name="id_stu" value="9765787" />
                 <tr>
                         <th>總學分數 : </th>
                         <th class ="vTotal">0</th>
                         <th> <button type="submit" id="Application" style="display:block">申請</button></th>
                 </tr>
 		</tbody>
-	    </form>
 	    </table>
         </div>
       </div>
