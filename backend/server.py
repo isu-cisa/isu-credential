@@ -58,41 +58,6 @@ def index():
 def index():
     return render_template('index.html', current_time=datetime.utcnow())
 
-@app.route("/certificate_list")
-@login_required
-def certificate_list():
-    # Credentials that push to blockchain already
-    f = open("static/history.txt", "r")
-    content = f.readlines()
-    f.close()
-
-    list_content = []
-    for obj in content:
-        try:
-            data = findmessages(obj)
-            data_json = {"status":0}
-            data_json = json.loads(data)
-            hash_url = "https://thetangle.org/bundle/" + obj.rstrip()
-            data_json["hash"] = hash_url
-            data_json = {"status":1}
-        except:
-            pass
-
-        list_content.append(data_json)
-
-    # Credentials that not push to blockchain yet
-    list_experience = []
-    fb = open("static/experience.txt", "r")
-    list_raw = fb.readlines()
-    fb.close()
-
-    for obj in list_raw:
-        data_json = json.loads(obj)
-        list_experience.append(data_json)
-
-    return render_template('Certificate_list.html', title = list_content, \
-            list_experience = list_experience)
-
 @app.route("/signup", methods=['GET', 'POST'])
 def signup():
     if request.method == 'GET':
@@ -212,7 +177,7 @@ def credential_editor():
         fp.write(json.dumps(exp) + "\n")
         fp.close()
 
-        return redirect(url_for("index"))
+        return redirect(url_for("personal_micro_credit_list"))
 
 @app.route("/personal_micro_credit_list",methods=['GET', 'POST'])
 @login_required
