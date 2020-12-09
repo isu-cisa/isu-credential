@@ -1,0 +1,11 @@
+{"name":"Tanmay","id_stu":"Bangalore","date":"2020/10/03"}
+{"name":"Sachin","id_stu":"Mumbai","date":"2020/11/23"}
+{"name":"Uma","id_stu":"Pune","date":"2020/09/13"}
+{"name": "john", "id_stu": "9765787", "date": "2020-12-09"}
+{"name": "john", "id_stu": "9765787", "date": "2020-12-09"}
+{"name": "john", "id_stu": "9765787", "date": "2020-12-09"}
+{"name": "john", "id_stu": "9765787", "date": "2020-12-09"}
+{"name": "john", "id_stu": "9765787", "date": "2020-12-09"}
+{"name": "john", "id_stu": "9765787", "date": "2020-12-09"}
+{"name": "john", "id_stu": "9765787", "date": "2020-12-09"}
+{"name": "john", "id_stu": "9765787", "date": "2020-12-09"}
