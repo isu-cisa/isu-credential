@@ -1,3 +1,4 @@
+{% block content %}
 <html lang="zh-tw">
 
 <head>
@@ -83,25 +84,17 @@
                 <tr>
                         <th>名字</th>
                         <th>學號</th>
+                        <th>日期</th>
                 </tr>
         </thead>
         <tbody>
-                <tr>
-                        <td>Tanmay</td>
-                        <td>Bangalore</td>
-
-
-                </tr>
-                <tr>
-                        <td>Sachin</td>
-                        <td>Mumbai</td>
-
-                </tr>
-                <tr>
-                        <td>Uma</td>
-                        <td>Pune</td>
-
-                </tr>
+		{% for obj in list_obj %}
+		    <tr>
+			<td>{{obj.name}}</td>
+			<td>{{obj.id_stu}}</td>
+			<td>{{obj.date}}</td>
+                    </tr>
+		{% endfor %}
         </tbody>
 		</table>
         </div>
@@ -143,6 +136,4 @@
 </body>
 
 </html>
-
-
-
+{% endblock %}
