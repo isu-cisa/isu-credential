@@ -348,8 +348,7 @@ def award_of_review():
     list_obj = []
     for obj in list_content:
         list_obj.append(json.loads(obj))
-   
-   return render_template('award_of_review.html', list_obj = list_obj)
+    return render_template('award_of_review.html', list_obj = list_obj)
 
 @app.route("/dashboard")
 def dashboard():
