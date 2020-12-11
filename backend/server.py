@@ -194,9 +194,27 @@ def personal_micro_credit_list():
         with open("static/award.txt", "a") as fp:
             json.dump(obj, fp)
             fp.write("\n")
-        return render_template('personal_micro_credit_list.html', list_raw_experience = list_raw_experience)
+
+        # update overview
+        file_experience = open("static/experience_ovrview.txt", "r")
+        list_raw_experience = file_experience.readlines()
+        file_experience.close()
+
+        list_output = []
+        for obj in list_raw_experience:
+            obj_json = json.loads(obj)
+            if obj_json["student_id"] != id_stu:
+                list_output.append(obj_json)
+
+        os.remove("static/experience_ovrview.txt")
+        with open('static/experience_ovrview.txt', 'a') as file_experience:
+            for obj in list_output:
+                file_experience.write(json.dumps(obj))
+                file_experience.write("\n")
+
+        return redirect(url_for("personal_micro_credit_list"))
     else:
-        lst_output = []
+        list_output = []
         file_experience = open("static/experience_ovrview.txt", "r")
         list_raw_experience = file_experience.readlines()
         file_experience.close()
@@ -204,9 +222,9 @@ def personal_micro_credit_list():
         for obj in list_raw_experience:
             obj_json = json.loads(obj)
             if obj_json["student_id"] == current_user.id:
-                lst_output.append(obj)
+                list_output.append(obj_json)
         
-        return render_template('personal_micro_credit_list.html', lst_output = lst_output)
+        return render_template('personal_micro_credit_list.html', list_output = list_output, current_user = current_user.id)
 
 @app.route("/personal_micro_credit_apply",methods=['GET', 'POST'])
 @login_required

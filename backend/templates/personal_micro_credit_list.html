@@ -89,21 +89,28 @@
         </thead>
 	<form method="post" action="/personal_micro_credit_list">
         <tbody>
-                {% for obj in list_raw_experience %}
-		    <tr>
-			    <td>{{obj.date}}</td>
-    			    <td>{{obj.experience}}</td>
-                            <td class="score">{{obj.Credit}}</td>
-                            <td><a href="https://thetangle.org/bundle/{{obj.status}}" >區塊鏈存證</a></td>
-                            <td>{{obj.date}}</td>
+            {% for obj in list_raw_experience %}
+                <tr>
+                    <td>{{obj.date}}</td>
+		    <td>{{obj.experience}}</td>
+		    <td class="score">{{obj.Credit}}</td>
+		    <td><a href="https://thetangle.org/bundle/{{obj.status}}" >區塊鏈存證</a></td>
+		    <td>{{obj.date}}</td>
+		</tr>
+	    {% endfor %}
 
-                </tr>
+            {% for obj in list_output %}
+                <tr>
+                    <td>{{obj.date}}</td>
+		    <td>{{obj.experience}}</td>
+		    <td class="score">{{obj.Credit}}</td>
+		    <td><a href="https://thetangle.org/bundle/{{obj.status}}" >區塊鏈存證</a></td>
+		    <td>{{obj.date}}</td>
+		</tr>
+	    {% endfor %}
 
-		{% endfor %}
-
-
-		<input type="hidden" name="name" value="john" />
-		<input type="hidden" name="id_stu" value="9765787" />
+		<input type="hidden" name="name" value={{current_user}} />
+		<input type="hidden" name="id_stu" value={{current_user}} />
                 <tr>
                         <th>總學分數 : </th>
                         <th class ="vTotal">0</th>
