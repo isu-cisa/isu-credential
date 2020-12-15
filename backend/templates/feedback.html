@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+CTYPE html>
 <html lang="zh-tw">
 
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  
+
 
   <title>心得</title>
 
@@ -27,7 +27,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
 
-  
+
 
   <!-- Template Main CSS File -->
   <link href="static/resource/css/style.css" rel="stylesheet">
@@ -46,13 +46,27 @@
   <header id="header" class="fixed-top">
     <div class="container-fluid d-flex justify-content-between align-items-center">
 
-      
+
       <!-- Uncomment below if you prefer to use an image logo -->
       <a class="logo"><img src="static/resource/img/logo.png" alt="" class="img-fluid"></a>
 	  
-	  <div class="header-social-links">
+          <div class="header-social-links">
         <b>微學分整合資訊系統</b>
       </div>
+	  
+	  <nav class="nav-menu d-none d-lg-block">
+        <ul>
+		<!-- 老師頁面 -->
+		<li><a href="/activity_info">活動編輯</a></li>
+		<li><a href="/review_check">心得審核</a></li>
+		<li><a href="/verify_list">審核總覽</a></li>
+		<li><a href="/certificate_list">證書列表</a></li>
+		<li><a href="/award_of_review">達兩學分者總覽</a></li>
+		<li><a href="/backend">後台管理</a></li>
+        	<li><a href="/logout">登出</a></li>
+	</ul>
+      </nav><!-- .nav-menu -->
+	  
     </div>
 
   </header><!-- End Header -->
@@ -64,20 +78,20 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-			<div class="container">
-				<form>
-					<div class="form-group">
-					<label for="experience">心得</label>
-					<textarea class="form-control" id="experience" rows="6" readonly>{{exp}}</textarea>
-					</div>
-				</form>
+                        <div class="container">
+                                <form>
+                                        <div class="form-group">
+                                        <label for="experience">心得</label>
+                                        <textarea class="form-control" id="experience" rows="6" readonly>{{exp}}</textarea>
+                                        </div>
+                                </form>
             </div>
       </div>
     </section><!-- End Resume Section -->
 
   </main><!-- End #main -->
 
-  <!-- ======= Footer ======= -->
+  <!-- ======= Footer ======= -
   <footer id="footer">
 
     <div class="container">
@@ -85,7 +99,7 @@
         Copyright © 2020 I-Shou University. All Right Reserved
       </div>
     </div>
-  </footer><!-- End Footer -->
+  </footer><!- End Footer -->
 
   <div id="preloader"></div>
   <a href="#" class="back-to-top"><i class="bx bx-up-arrow-alt"></i></a>
@@ -102,7 +116,7 @@
   <script src="static/resource/vendor/venobox/venobox.min.js"></script>
   <script src="static/resource/vendor/aos/aos.js"></script>
 
-  
+
 
   <!-- Template Main JS File -->
   <script src="static/resource/js/main.js"></script>

@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  
+
 
   <title>審核總覽</title>
 
@@ -26,7 +26,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css"><!-- 因為表格需要 在5000有引用 -->
 
-  
+
 
   <!-- Template Main CSS File -->
   <link href="static/resource/css/style.css" rel="stylesheet">
@@ -45,22 +45,22 @@
   <header id="header" class="fixed-top">
     <div class="container-fluid d-flex justify-content-between align-items-center">
 
-      
+
       <!-- Uncomment below if you prefer to use an image logo -->
       <a class="logo"><img src="static/resource/img/logo.png" alt="" class="img-fluid"></a>
-	  
-	  <div class="header-social-links">
+	
+          <div class="header-social-links">
         <b>微學分整合資訊系統</b>
       </div>
 
       <nav class="nav-menu d-none d-lg-block">
-	  <ul>
-		<!-- 老師頁面 -->
-		<li><a href="/activity_info">活動編輯</a></li>
-		<li><a href="/review_check">心得審核</a></li>
-		<li><a href="/verify_list">審核總覽</a></li>
-		<li><a href="/award_of_review">達兩學分者總覽</a></li>
-		<li><a href="/backend">後台管理</a></li>
+          <ul>
+                <!-- 老師頁面 -->
+                <li><a href="/activity_info">活動編輯</a></li>
+                <li><a href="/review_check">心得審核</a></li>
+                <li><a href="/verify_list">審核總覽</a></li>
+                <li><a href="/award_of_review">達兩學分者總覽</a></li>
+                <li><a href="/backend">後台管理</a></li>
         </ul>
       </nav><!-- .nav-menu -->
 
@@ -76,9 +76,10 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-			<table class="table table-striped">
+                        <table class="table table-striped">
         <thead>
                 <tr>
+			<th>ID</th>     <!--多加一行ID，要覆蓋--!>
                         <th>名字</th>
                         <th>學號</th>
                         <th>活動名稱</th>
@@ -93,23 +94,23 @@
                                 <td>{{user.name}}</td>
                                 <td>{{user.student_id}}</td>
                                 <td>{{user.ActivityName}}</td>
-                                <td><A HREF ="/review_check_url?id={{user.id}}&student_id={{user.student_id}}&ActivityName={{user.ActivityName}}&Date={{user.Date}}">Link</A></td>
-				{% if user.status|length > 70 %}
-				    <td><a href="https://thetangle.org/bundle/{{user.status}}" >區塊鏈存證</a></td>
-				{% else %}
+				<td><A HREF ="/review_readonly?id={{user.id}}&student_id={{user.student_id}}&ActivityName={{user.ActivityName}}&Date={{user.Date}}">Link</A></td> <!--修改連結，要覆蓋--!>
+                                {% if user.status|length > 70 %}
+                                    <td><a href="https://thetangle.org/bundle/{{user.status}}" >區塊鏈存證</a></td>
+                                {% else %}
                                     <td>{{user.status}}</td>
-				{% endif %}
+                                {% endif %}
                         </tr>
                 {% endfor %}
         </tbody>
-		</table>
+                </table>
         </div>
       </div>
     </section><!-- End Resume Section -->
 
   </main><!-- End #main -->
 
-  <!-- ======= Footer ======= -->
+  <!-- ======= Footer ======= ->
   <footer id="footer">
 
     <div class="container">
@@ -117,7 +118,7 @@
         Copyright © 2020 I-Shou University. All Right Reserved
       </div>
     </div>
-  </footer><!-- End Footer -->
+  </footer><!-- End Footer ->
 
   <div id="preloader"></div>
   <a href="#" class="back-to-top"><i class="bx bx-up-arrow-alt"></i></a>
@@ -134,7 +135,7 @@
   <script src="static/resource/vendor/venobox/venobox.min.js"></script>
   <script src="static/resource/vendor/aos/aos.js"></script>
   <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>  <!-- 因為表格需要 在5000有引用 -->
-  
+
 
   <!-- Template Main JS File -->
   <script src="static/resource/js/main.js"></script>
@@ -143,4 +144,3 @@
 
 </html>
 {% endblock %}
-
