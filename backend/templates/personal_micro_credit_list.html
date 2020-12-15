@@ -1,3 +1,4 @@
+{% block content %}
 <!DOCTYPE html>
 <html lang="zh-tw">
 
@@ -59,6 +60,7 @@
 		<li class="menu-active"><a href="/credential_editor">心得填寫</a></li>
 		<li><a href="/personal_micro_credit_list">個人證書一覽表</a></li>
 		<li><a href="/personal_micro_credit_apply">心得審核狀態查詢</a></li>
+		<li><input type="button" value="登出" onclick="location.href='/logout'"></li>
         </ul>
       </nav><!-- .nav-menu -->
        
@@ -87,31 +89,19 @@
         </thead>
 	<form method="post" action="/personal_micro_credit_list">
         <tbody>
-                <tr>
-                        <td>2020/04/01</td>
-                        <td>插花</td>
-                        <td class="score">0.9</td>
-                        <td><A HREF ="https://thetangle.org/transaction/9AQDZDYXPGKTSCNRGTJKJSXKQVZVGJQRGVMTULZIWZIIBGFLENUWXDYVFBECSHJZHKHYYSJMBXPWZ9999">Link</A></td>
-                        <td>2020/05/01</td>
-
-
-                </tr>
-                <tr>
-                        <td>2020/04/02</td>
-                        <td>音樂賞析</td>
-                        <td class="score">0.9</td>
-                        <td>8888</td>
-                        <td>2020/05/02</td>
+                {% for obj in list_raw_experience %}
+		    <tr>
+			    <td>{{obj.date}}</td>
+    			    <td>{{obj.experience}}</td>
+                            <td class="score">{{obj.Credit}}</td>
+                            <td><a href="https://thetangle.org/bundle/{{obj.status}}" >區塊鏈存證</a></td>
+                            <td>{{obj.date}}</td>
 
                 </tr>
-                <tr>
-                        <td>2020/04/03</td>
-                        <td>電影賞析</td>
-                        <td class="score">0.9</td>
-                        <td>88888</td>
-                        <td>2020/05/03</td>
 
-                </tr>
+		{% endfor %}
+
+
 		<input type="hidden" name="name" value="john" />
 		<input type="hidden" name="id_stu" value="9765787" />
                 <tr>
@@ -180,3 +170,4 @@
                         }
                 });
         </script>
+{% endblock %}

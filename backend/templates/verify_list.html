@@ -1,4 +1,4 @@
-CTYPE html>
+{% block content %}
 <html lang="zh-tw">
 
 <head>
@@ -56,16 +56,13 @@ CTYPE html>
       <nav class="nav-menu d-none d-lg-block">
 	  <ul>
 		<!-- 老師頁面 -->
-		<li><a href="activity_info.html">活動編輯</a></li>
-		<li><a href="review_check.html">心得審核</a></li>
-		<li><a href="verify_list.html">審核總覽</a></li>
-		<li><a href="certificate_list.html">證書列表</a></li>
-		<li><a href="award_of_review.html">達兩學分者總覽</a></li>
-		<li><a href="backend.html">後台管理</a></li>
+		<li><a href="/activity_info">活動編輯</a></li>
+		<li><a href="/review_check">心得審核</a></li>
+		<li><a href="/verify_list">審核總覽</a></li>
+		<li><a href="/award_of_review">達兩學分者總覽</a></li>
+		<li><a href="/backend">後台管理</a></li>
         </ul>
       </nav><!-- .nav-menu -->
-
-       
 
 
     </div>
@@ -90,31 +87,20 @@ CTYPE html>
                 </tr>
         </thead>
         <tbody>
-                <tr>
-                        <td>Tanmay</td>
-                        <td>Bangalore</td>
-                        <td>560001</td>
-                        <td><A HREF ="http://140.127.196.92:5000/review_check_url">Link</A></td>
-                        <td>審核通過</td>
-
-
-                </tr>
-                <tr>
-                        <td>Sachin</td>
-                        <td>Mumbai</td>
-                        <td>400003</td>
-                        <td>560001</td>
-                        <td>審核不通過，原因: 字數不足</td>
-
-                </tr>
-                <tr>
-                        <td>Uma</td>
-                        <td>Pune</td>
-                        <td>411027</td>
-                        <td>560001</td>
-                        <td>560001</td>
-
-                </tr>
+              {% for user in list_review  %}
+                        <tr>
+                                <td>{{user.id}}</td>
+                                <td>{{user.name}}</td>
+                                <td>{{user.student_id}}</td>
+                                <td>{{user.ActivityName}}</td>
+                                <td><A HREF ="/review_check_url?id={{user.id}}&student_id={{user.student_id}}&ActivityName={{user.ActivityName}}&Date={{user.Date}}">Link</A></td>
+				{% if user.status|length > 70 %}
+				    <td><a href="https://thetangle.org/bundle/{{user.status}}" >區塊鏈存證</a></td>
+				{% else %}
+                                    <td>{{user.status}}</td>
+				{% endif %}
+                        </tr>
+                {% endfor %}
         </tbody>
 		</table>
         </div>
@@ -156,6 +142,5 @@ CTYPE html>
 </body>
 
 </html>
-
-
+{% endblock %}
 

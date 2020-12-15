@@ -1,9 +1,8 @@
-{"experience": "\u8b80\u66f8\u5f88\u7d2f", "Date": "2020-09-25", "ActivityName": "\u8b80\u66f8\u6703", "Credit": "4", "student_id": "isu"}
-{"experience": "\u7a0b\u5f0f\u5f88\u96e3", "Date": "2020-01-05", "ActivityName": "Python \u7a0b\u5f0f\u5c0e\u8ad6", "Credit": "3", "student_id": "666"}
-{"experience": "\u82b1\u5f88\u6f02\u4eae", "Date": "2020-09-21", "ActivityName": "\u63d2\u82b1", "Credit": "2", "student_id": "rrr"}
-{"experience": "\u8a71\u5f88\u591a", "Date": "2020-01-01", "ActivityName": "\u6f14\u8b1b", "Credit": "3", "student_id": "test"}
-{"experience": "\u7a0b\u5f0f\u5f88\u8907\u96dc", "Date": "2020-01-05", "ActivityName": "Python \u7a0b\u5f0f\u5c0e\u8ad6", "Credit": "3", "student_id": "isu"}
-{"experience": "hello world", "Date": "2020-01-01", "ActivityName": "\u6f14\u8b1b", "Credit": "3", "student_id": "isu"}
-{"experience": "\u96fb\u5f71\u5f88\u597d\u770b", "Date": "2020-01-03", "ActivityName": "\u96fb\u5f71\u6b23\u8cde", "Credit": "1", "student_id": "isu"}
-{"experience": "\u53b2\u5bb3", "Date": "2020-01-03", "ActivityName": "\u96fb\u5f71\u6b23\u8cde", "Credit": "1", "student_id": "isu"}
-{"experience": "\u53b2\u5bb3", "Date": "1090813", "ActivityName": "aaa", "Credit": "2", "student_id": "isu"}
+{"id": "djfd", "experience": "\u8a71\u5f88\u591a", "Date": "2020-01-01", "ActivityName": "\u6f14\u8b1b", "Credit": "3", "student_id": "test"}
+{"id": "dw99", "experience": "hello world", "Date": "2020-01-01", "ActivityName": "\u6f14\u8b1b", "Credit": "3", "student_id": "isu"}
+{"id": "dw8j", "experience": "\u53b2\u5bb3", "Date": "2020-01-03", "ActivityName": "\u96fb\u5f71\u6b23\u8cde", "Credit": "1", "student_id": "isu"}
+{"id": "d88d", "experience": "\u53b2\u5bb3", "Date": "1090813", "ActivityName": "aaa", "Credit": "2", "student_id": "isu"}
+{"experience": "\u7a0b\u5f0f\u597d\u96e3\u5beb \u5df2\u7d93\u5beb\u5169\u5929\u4e86", "id": "PZhs", "Date": "2020-01-99", "ActivityName": "\u7a0b\u5f0f\u6559\u80b2", "Credit": "3", "student_id": "123456789A"}
+{"experience": "123", "id": "EpWi", "Date": "2020-01-01", "ActivityName": "\u6f14\u8b1b", "Credit": "3", "student_id": "isu"}
+{"experience": "123", "id": "rZMD", "Date": "2020-01-01", "ActivityName": "\u6f14\u8b1b", "Credit": "3", "student_id": "isu"}
+{"experience": "123", "id": "xewa", "Date": "1090813", "ActivityName": "0101", "Credit": "0.1", "student_id": "isu"}
