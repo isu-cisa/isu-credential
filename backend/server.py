@@ -120,7 +120,7 @@ def signin():
 @app.route('/logout')
 def logout():
     logout_user()
-    return render_template('sign_in.html')
+    return render_template('index.html')
 
 # Activity information page
 @app.route("/activity_info", methods=['GET', 'POST'])
