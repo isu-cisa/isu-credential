@@ -333,9 +333,25 @@ def backend_account_manage():
 
     return redirect(url_for("index"))
 
-@app.route("/review_readonly")
+@app.route("/review_readonly", methods=['GET'])
 def review_readonly():
-    return render_template('review_readonly.html')
+    exp = ""
+
+    ActivityName = request.args.get("ActivityName")
+    Date = request.args.get("Date")
+    rand_id = request.args.get("id")
+    student_id = request.args.get("student_id")
+
+    f = open("static/experience_ovrview.txt", "r")
+    content = f.readlines()
+    f.close()
+
+    for obj in content:
+        obj = json.loads(obj)
+        if obj["student_id"] == student_id and obj["ActivityName"] == ActivityName and obj["Date"] == Date and obj["id"] == rand_id:
+            exp = obj["experience"]
+
+    return render_template('review_readonly.html',exp = exp)
 
 @app.route("/review_check_url",methods=['GET', 'POST'])
 @login_required
